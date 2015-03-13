@@ -1,0 +1,36 @@
+
+.scroll-pane {
+    -fx-border-width: 0;
+    -fx-background-color: white;
+}
+
+.tree-pane {
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+
+.label {
+    -fx-background-color: linear-gradient(
+            to top,
+            #0063A9 0%,
+            #00B8EC 100%
+    );
+
+    -fx-font-size: 14pt;
+
+    -fx-text-fill: white;
+
+    -fx-border-width: 0;
+
+    -fx-border-radius: 3px;
+    -fx-background-radius: 5px;
+
+    -fx-padding: 4;
+}
+
+.tree-pane-line {
+    -fx-stroke: black;
+    -fx-stroke-dash-array: 10px;
+    -fx-stroke-width: 1px;
+}
