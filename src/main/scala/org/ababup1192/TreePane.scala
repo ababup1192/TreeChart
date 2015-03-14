@@ -284,24 +284,6 @@ class TreePane extends Pane {
     layoutChildren()
   }
 
-  def getPosition(node: Node): Option[NodePosition] = positionByNode.get(node)
-
-  def getNode(position: NodePosition): Option[Node] = nodeByPosition.get(position)
-
-  def getNodesOfParent(position: NodePosition): Option[Set[Node]] = {
-    nodeByParentPosition.get(position) match {
-      case Some(nodes) => Some(Set.empty ++ nodes)
-      case None => None
-    }
-  }
-
-  def getNodesOfLevel(level: Int): Option[Set[Node]] = {
-    nodeByLevel.get(level) match {
-      case Some(nodes) => Some(Set.empty ++ nodes)
-      case None => None
-    }
-  }
-
   protected def setPosition(node: Node, position: NodePosition) {
     unsetPosition(node)
     nodeByPosition.get(position).map { n =>
