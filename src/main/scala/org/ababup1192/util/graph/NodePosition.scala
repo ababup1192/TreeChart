@@ -1,21 +1,38 @@
-package org.ababup1192
+package org.ababup1192.util.graph
 
-class NodePosition(val path: Seq[Int]) extends Ordered[NodePosition] {
+/**
+ * Tree path class
+ * @param path Vector
+ */
+class NodePosition(val path: Vector[Int]) extends Ordered[NodePosition] {
 
-  def parent = {
-    if (path.nonEmpty) {
-      NodePosition(path.init)
-    } else {
+  /**
+   * Return a parent position
+   * @return NodePosition
+   */
+  def parent: NodePosition = {
+    if (path.isEmpty) {
       NodePosition.ROOT
+    } else {
+      NodePosition(path.init)
     }
   }
 
-  def child(pathElement: Int): NodePosition = {
-    val newPath = path :+ pathElement
+  /**
+   * Return a child position
+   * @param label a next child node's label
+   * @return NodePosition
+   */
+  def child(label: Int): NodePosition = {
+    val newPath = path :+ label
     NodePosition(newPath)
   }
 
-  def level = {
+  /**
+   * Return a node level in tree
+   * @return Int
+   */
+  def level: Int = {
     path.length
   }
 
@@ -49,9 +66,12 @@ class NodePosition(val path: Seq[Int]) extends Ordered[NodePosition] {
 }
 
 object NodePosition {
+  // ROOT is a empty path
   val ROOT = NodePosition()
 
-  def apply() = new NodePosition(Seq[Int]())
+  def apply() = new NodePosition(Vector[Int]())
 
-  def apply(path: Seq[Int]) = new NodePosition(path)
+  def apply(path: Vector[Int]) = new NodePosition(path)
+
+  def apply(path: Int*) = new NodePosition(path.toVector)
 }

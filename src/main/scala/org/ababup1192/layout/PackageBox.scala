@@ -1,9 +1,9 @@
-package org.ababup1192
+package org.ababup1192.layout
 
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.control.Label
-import scalafx.scene.layout.{HBox, StackPane, VBox}
+import scalafx.scene.layout.{StackPane, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 

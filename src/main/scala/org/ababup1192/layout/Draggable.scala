@@ -1,4 +1,4 @@
-package org.ababup1192
+package org.ababup1192.layout
 
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
