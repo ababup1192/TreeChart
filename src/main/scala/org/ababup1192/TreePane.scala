@@ -120,6 +120,8 @@ class TreePane extends Pane {
       } else {
         adjustLineCount(0)
       }
+
+      // For Scroll pane
       val totalHeight = levelHeight.values.sum
       prefWidth = widthByPosition.get(NodePosition.ROOT).get
       prefHeight = totalHeight
@@ -208,22 +210,26 @@ class TreePane extends Pane {
 
   def relocateNode(position: NodePosition, boxesByPosition: MHashMap[NodePosition, Rectangle2D],
                    xCenterHintByPosition: MHashMap[NodePosition, Double], yCenterHintByPosition: MHashMap[NodePosition, Double]) = {
+
     val positionBox = boxesByPosition(position)
     val xCenterHint = xCenterHintByPosition.getOrElse(position, (positionBox.getMinX + positionBox.getMaxX) / 2d)
     val yCenterHint = (positionBox.getMinY + positionBox.getMaxY) / 2d
 
     xCenterHintByPosition.put(position, xCenterHint)
     yCenterHintByPosition.put(position, yCenterHint)
+
     nodeByPosition.get(position).foreach { node =>
       val nodeBounds = node.layoutBounds.value
       node.relocate(xCenterHint - nodeBounds.getWidth / 2d, yCenterHint - nodeBounds.getHeight / 2d)
     }
+    /*
     val parentPosition = position.parent
     xCenterHintByPosition.get(parentPosition).map { parentXCenterHint =>
       xCenterHintByPosition.put(parentPosition, (parentXCenterHint + xCenterHint) / 2d)
     }.getOrElse {
       xCenterHintByPosition.put(parentPosition, xCenterHint)
     }
+    */
   }
 
   def drawLines(currentLine: Int, position: NodePosition, childPosition: NodePosition,
